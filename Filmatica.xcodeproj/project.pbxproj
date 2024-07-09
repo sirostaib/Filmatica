@@ -260,9 +260,9 @@
 			buildConfigurationList = 1645729B2C3B61F9005B7136 /* Build configuration list for PBXNativeTarget "Filmatica" */;
 			buildPhases = (
 				1645726D2C3B61F7005B7136 /* Sources */,
+				16348FDE2C3D1BA200CDB4D5 /* SwiftLint */,
 				1645726E2C3B61F7005B7136 /* Frameworks */,
 				1645726F2C3B61F7005B7136 /* Resources */,
-				16348FDE2C3D1BA200CDB4D5 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -407,7 +407,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"/opt/homebrew/bin:$PATH\"\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+			shellScript = "export PATH=\"/opt/homebrew/bin:$PATH\"\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
