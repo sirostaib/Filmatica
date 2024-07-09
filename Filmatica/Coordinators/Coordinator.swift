@@ -7,16 +7,17 @@
 
 import UIKit
 
-enum Event{
-    case buttonTapped
-}
+// enum Event{
+//    case openDetailVC
+// }
 
 protocol Coordinator {
     var navigationController: UINavigationController? { get set }
-    
+
     func start()
-    
-    func eventOccured(with type: Event)
+
+    // func eventOccured(with type: Event)
+    func openMovieDetail(with movie: Movie)
 }
 
 protocol Coordinating {
