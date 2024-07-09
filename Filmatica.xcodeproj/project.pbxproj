@@ -9,10 +9,19 @@
 /* Begin PBXBuildFile section */
 		16348FB12C3CD4D500CDB4D5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FB02C3CD4D500CDB4D5 /* Coordinator.swift */; };
 		16348FB32C3CD5A700CDB4D5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FB22C3CD5A700CDB4D5 /* MainCoordinator.swift */; };
-		16348FB52C3CD89200CDB4D5 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FB42C3CD89200CDB4D5 /* DetailVC.swift */; };
+		16348FB82C3CDE1200CDB4D5 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FB72C3CDE1200CDB4D5 /* Color+Ext.swift */; };
+		16348FC82C3CF47A00CDB4D5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FC72C3CF47A00CDB4D5 /* Movie.swift */; };
+		16348FCA2C3CF4B400CDB4D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FC92C3CF4B400CDB4D5 /* HomeViewController.swift */; };
+		16348FCC2C3CF4D900CDB4D5 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FCB2C3CF4D900CDB4D5 /* MovieDetailViewController.swift */; };
+		16348FCE2C3CF74900CDB4D5 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FCD2C3CF74900CDB4D5 /* HomeViewModel.swift */; };
+		16348FDA2C3D0E2F00CDB4D5 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FD92C3D0E2E00CDB4D5 /* MovieTableViewCell.swift */; };
+		16348FDC2C3D103B00CDB4D5 /* UIImageViewAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FDB2C3D103B00CDB4D5 /* UIImageViewAsync.swift */; };
+		16348FE12C3D1C1200CDB4D5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 16348FE02C3D1C1200CDB4D5 /* RxCocoa */; };
+		16348FE32C3D1C1200CDB4D5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 16348FE22C3D1C1200CDB4D5 /* RxRelay */; };
+		16348FE52C3D1C1200CDB4D5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 16348FE42C3D1C1200CDB4D5 /* RxSwift */; };
+		16348FE72C3D1C1200CDB4D5 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 16348FE62C3D1C1200CDB4D5 /* RxTest */; };
 		164572752C3B61F7005B7136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572742C3B61F7005B7136 /* AppDelegate.swift */; };
 		164572772C3B61F7005B7136 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572762C3B61F7005B7136 /* SceneDelegate.swift */; };
-		164572792C3B61F7005B7136 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572782C3B61F7005B7136 /* ViewController.swift */; };
 		1645727E2C3B61F9005B7136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1645727D2C3B61F9005B7136 /* Assets.xcassets */; };
 		164572812C3B61F9005B7136 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 164572802C3B61F9005B7136 /* Base */; };
 		1645728C2C3B61F9005B7136 /* FilmaticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645728B2C3B61F9005B7136 /* FilmaticaTests.swift */; };
@@ -40,11 +49,16 @@
 /* Begin PBXFileReference section */
 		16348FB02C3CD4D500CDB4D5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		16348FB22C3CD5A700CDB4D5 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		16348FB42C3CD89200CDB4D5 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		16348FB72C3CDE1200CDB4D5 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
+		16348FC72C3CF47A00CDB4D5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		16348FC92C3CF4B400CDB4D5 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		16348FCB2C3CF4D900CDB4D5 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		16348FCD2C3CF74900CDB4D5 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		16348FD92C3D0E2E00CDB4D5 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		16348FDB2C3D103B00CDB4D5 /* UIImageViewAsync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewAsync.swift; sourceTree = "<group>"; };
 		164572712C3B61F7005B7136 /* Filmatica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filmatica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		164572742C3B61F7005B7136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		164572762C3B61F7005B7136 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		164572782C3B61F7005B7136 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1645727D2C3B61F9005B7136 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		164572802C3B61F9005B7136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		164572822C3B61F9005B7136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16348FE52C3D1C1200CDB4D5 /* RxSwift in Frameworks */,
+				16348FE32C3D1C1200CDB4D5 /* RxRelay in Frameworks */,
+				16348FE12C3D1C1200CDB4D5 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16348FE72C3D1C1200CDB4D5 /* RxTest in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +98,106 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16348FB62C3CDDFE00CDB4D5 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				16348FB72C3CDE1200CDB4D5 /* Color+Ext.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		16348FBC2C3CEF5600CDB4D5 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				164572742C3B61F7005B7136 /* AppDelegate.swift */,
+				164572762C3B61F7005B7136 /* SceneDelegate.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		16348FBD2C3CEF8500CDB4D5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1645727F2C3B61F9005B7136 /* LaunchScreen.storyboard */,
+				1645727D2C3B61F9005B7136 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		16348FBE2C3CEFC500CDB4D5 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				16348FB02C3CD4D500CDB4D5 /* Coordinator.swift */,
+				16348FB22C3CD5A700CDB4D5 /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		16348FBF2C3CF04300CDB4D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				16348FC72C3CF47A00CDB4D5 /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		16348FC02C3CF04C00CDB4D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				16348FD82C3D0DFD00CDB4D5 /* Cells */,
+				16348FC92C3CF4B400CDB4D5 /* HomeViewController.swift */,
+				16348FCB2C3CF4D900CDB4D5 /* MovieDetailViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		16348FC12C3CF05600CDB4D5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				16348FCD2C3CF74900CDB4D5 /* HomeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		16348FC22C3CF08D00CDB4D5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		16348FC32C3CF09400CDB4D5 /* Utilties */ = {
+			isa = PBXGroup;
+			children = (
+				16348FB62C3CDDFE00CDB4D5 /* Extentions */,
+				16348FC42C3CF0AC00CDB4D5 /* Helpers */,
+			);
+			path = Utilties;
+			sourceTree = "<group>";
+		};
+		16348FC42C3CF0AC00CDB4D5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				16348FDB2C3D103B00CDB4D5 /* UIImageViewAsync.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		16348FC52C3CF0C800CDB4D5 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		16348FD82C3D0DFD00CDB4D5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				16348FD92C3D0E2E00CDB4D5 /* MovieTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		164572682C3B61F7005B7136 = {
 			isa = PBXGroup;
 			children = (
@@ -103,14 +221,15 @@
 		164572732C3B61F7005B7136 /* Filmatica */ = {
 			isa = PBXGroup;
 			children = (
-				164572742C3B61F7005B7136 /* AppDelegate.swift */,
-				164572762C3B61F7005B7136 /* SceneDelegate.swift */,
-				16348FB02C3CD4D500CDB4D5 /* Coordinator.swift */,
-				16348FB22C3CD5A700CDB4D5 /* MainCoordinator.swift */,
-				164572782C3B61F7005B7136 /* ViewController.swift */,
-				16348FB42C3CD89200CDB4D5 /* DetailVC.swift */,
-				1645727D2C3B61F9005B7136 /* Assets.xcassets */,
-				1645727F2C3B61F9005B7136 /* LaunchScreen.storyboard */,
+				16348FBC2C3CEF5600CDB4D5 /* Support */,
+				16348FBD2C3CEF8500CDB4D5 /* Resources */,
+				16348FBE2C3CEFC500CDB4D5 /* Coordinators */,
+				16348FBF2C3CF04300CDB4D5 /* Models */,
+				16348FC02C3CF04C00CDB4D5 /* Views */,
+				16348FC12C3CF05600CDB4D5 /* ViewModels */,
+				16348FC22C3CF08D00CDB4D5 /* Services */,
+				16348FC32C3CF09400CDB4D5 /* Utilties */,
+				16348FC52C3CF0C800CDB4D5 /* Networking */,
 				164572822C3B61F9005B7136 /* Info.plist */,
 			);
 			path = Filmatica;
@@ -143,12 +262,18 @@
 				1645726D2C3B61F7005B7136 /* Sources */,
 				1645726E2C3B61F7005B7136 /* Frameworks */,
 				1645726F2C3B61F7005B7136 /* Resources */,
+				16348FDE2C3D1BA200CDB4D5 /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Filmatica;
+			packageProductDependencies = (
+				16348FE02C3D1C1200CDB4D5 /* RxCocoa */,
+				16348FE22C3D1C1200CDB4D5 /* RxRelay */,
+				16348FE42C3D1C1200CDB4D5 /* RxSwift */,
+			);
 			productName = Filmatica;
 			productReference = 164572712C3B61F7005B7136 /* Filmatica.app */;
 			productType = "com.apple.product-type.application";
@@ -167,6 +292,9 @@
 				164572892C3B61F9005B7136 /* PBXTargetDependency */,
 			);
 			name = FilmaticaTests;
+			packageProductDependencies = (
+				16348FE62C3D1C1200CDB4D5 /* RxTest */,
+			);
 			productName = FilmaticaTests;
 			productReference = 164572872C3B61F9005B7136 /* FilmaticaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -221,6 +349,9 @@
 				Base,
 			);
 			mainGroup = 164572682C3B61F7005B7136;
+			packageReferences = (
+				16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 164572722C3B61F7005B7136 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,17 +389,44 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		16348FDE2C3D1BA200CDB4D5 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"/opt/homebrew/bin:$PATH\"\n\nif command -v swiftlint >/dev/null 2>&1\nthen\n    swiftlint\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1645726D2C3B61F7005B7136 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16348FDA2C3D0E2F00CDB4D5 /* MovieTableViewCell.swift in Sources */,
 				16348FB12C3CD4D500CDB4D5 /* Coordinator.swift in Sources */,
-				164572792C3B61F7005B7136 /* ViewController.swift in Sources */,
+				16348FDC2C3D103B00CDB4D5 /* UIImageViewAsync.swift in Sources */,
+				16348FCE2C3CF74900CDB4D5 /* HomeViewModel.swift in Sources */,
+				16348FB82C3CDE1200CDB4D5 /* Color+Ext.swift in Sources */,
+				16348FCA2C3CF4B400CDB4D5 /* HomeViewController.swift in Sources */,
 				164572752C3B61F7005B7136 /* AppDelegate.swift in Sources */,
+				16348FCC2C3CF4D900CDB4D5 /* MovieDetailViewController.swift in Sources */,
 				16348FB32C3CD5A700CDB4D5 /* MainCoordinator.swift in Sources */,
 				164572772C3B61F7005B7136 /* SceneDelegate.swift in Sources */,
-				16348FB52C3CD89200CDB4D5 /* DetailVC.swift in Sources */,
+				16348FC82C3CF47A00CDB4D5 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +601,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J2S37HDXXS;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Filmatica/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Filmatica;
@@ -472,6 +631,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = J2S37HDXXS;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Filmatica/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Filmatica;
@@ -609,6 +769,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		16348FE02C3D1C1200CDB4D5 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		16348FE22C3D1C1200CDB4D5 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		16348FE42C3D1C1200CDB4D5 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		16348FE62C3D1C1200CDB4D5 /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 164572692C3B61F7005B7136 /* Project object */;
 }
