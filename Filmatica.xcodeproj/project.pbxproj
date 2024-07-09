@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16348FB12C3CD4D500CDB4D5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FB02C3CD4D500CDB4D5 /* Coordinator.swift */; };
+		16348FB32C3CD5A700CDB4D5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FB22C3CD5A700CDB4D5 /* MainCoordinator.swift */; };
+		16348FB52C3CD89200CDB4D5 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16348FB42C3CD89200CDB4D5 /* DetailVC.swift */; };
 		164572752C3B61F7005B7136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572742C3B61F7005B7136 /* AppDelegate.swift */; };
 		164572772C3B61F7005B7136 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572762C3B61F7005B7136 /* SceneDelegate.swift */; };
 		164572792C3B61F7005B7136 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572782C3B61F7005B7136 /* ViewController.swift */; };
-		1645727C2C3B61F7005B7136 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1645727B2C3B61F7005B7136 /* Base */; };
 		1645727E2C3B61F9005B7136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1645727D2C3B61F9005B7136 /* Assets.xcassets */; };
 		164572812C3B61F9005B7136 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 164572802C3B61F9005B7136 /* Base */; };
 		1645728C2C3B61F9005B7136 /* FilmaticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645728B2C3B61F9005B7136 /* FilmaticaTests.swift */; };
@@ -36,11 +38,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16348FB02C3CD4D500CDB4D5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		16348FB22C3CD5A700CDB4D5 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		16348FB42C3CD89200CDB4D5 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		164572712C3B61F7005B7136 /* Filmatica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filmatica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		164572742C3B61F7005B7136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		164572762C3B61F7005B7136 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		164572782C3B61F7005B7136 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1645727B2C3B61F7005B7136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1645727D2C3B61F9005B7136 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		164572802C3B61F9005B7136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		164572822C3B61F9005B7136 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,8 +105,10 @@
 			children = (
 				164572742C3B61F7005B7136 /* AppDelegate.swift */,
 				164572762C3B61F7005B7136 /* SceneDelegate.swift */,
+				16348FB02C3CD4D500CDB4D5 /* Coordinator.swift */,
+				16348FB22C3CD5A700CDB4D5 /* MainCoordinator.swift */,
 				164572782C3B61F7005B7136 /* ViewController.swift */,
-				1645727A2C3B61F7005B7136 /* Main.storyboard */,
+				16348FB42C3CD89200CDB4D5 /* DetailVC.swift */,
 				1645727D2C3B61F9005B7136 /* Assets.xcassets */,
 				1645727F2C3B61F9005B7136 /* LaunchScreen.storyboard */,
 				164572822C3B61F9005B7136 /* Info.plist */,
@@ -233,7 +239,6 @@
 			files = (
 				1645727E2C3B61F9005B7136 /* Assets.xcassets in Resources */,
 				164572812C3B61F9005B7136 /* Base in Resources */,
-				1645727C2C3B61F7005B7136 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +263,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16348FB12C3CD4D500CDB4D5 /* Coordinator.swift in Sources */,
 				164572792C3B61F7005B7136 /* ViewController.swift in Sources */,
 				164572752C3B61F7005B7136 /* AppDelegate.swift in Sources */,
+				16348FB32C3CD5A700CDB4D5 /* MainCoordinator.swift in Sources */,
 				164572772C3B61F7005B7136 /* SceneDelegate.swift in Sources */,
+				16348FB52C3CD89200CDB4D5 /* DetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +305,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1645727A2C3B61F7005B7136 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1645727B2C3B61F7005B7136 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1645727F2C3B61F9005B7136 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -445,11 +445,12 @@
 				DEVELOPMENT_TEAM = J2S37HDXXS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Filmatica/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Filmatica;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -473,11 +474,12 @@
 				DEVELOPMENT_TEAM = J2S37HDXXS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Filmatica/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Filmatica;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -7,13 +7,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, Coordinating {
+    var coordinator: (any Coordinator)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .cyan
+        title = "Filmatica"
+        
+        
+        addButton()
     }
-
+    
+    func addButton(){
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 70))
+        button.center = view.center
+        button.backgroundColor = .systemGreen
+        button.setTitle("Navigate", for: .normal)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    @objc func buttonPressed(){
+        coordinator?.eventOccured(with: .buttonTapped)
+    }
 
 }
 
