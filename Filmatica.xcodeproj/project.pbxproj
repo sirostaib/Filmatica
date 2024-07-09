@@ -27,6 +27,7 @@
 		1645728C2C3B61F9005B7136 /* FilmaticaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1645728B2C3B61F9005B7136 /* FilmaticaTests.swift */; };
 		164572962C3B61F9005B7136 /* FilmaticaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572952C3B61F9005B7136 /* FilmaticaUITests.swift */; };
 		164572982C3B61F9005B7136 /* FilmaticaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572972C3B61F9005B7136 /* FilmaticaUITestsLaunchTests.swift */; };
+		169F86192C3D4B9E0019971A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 169F86182C3D4B9E0019971A /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				169F86192C3D4B9E0019971A /* Kingfisher in Frameworks */,
 				16348FE52C3D1C1200CDB4D5 /* RxSwift in Frameworks */,
 				16348FE32C3D1C1200CDB4D5 /* RxRelay in Frameworks */,
 				16348FE12C3D1C1200CDB4D5 /* RxCocoa in Frameworks */,
@@ -273,6 +275,7 @@
 				16348FE02C3D1C1200CDB4D5 /* RxCocoa */,
 				16348FE22C3D1C1200CDB4D5 /* RxRelay */,
 				16348FE42C3D1C1200CDB4D5 /* RxSwift */,
+				169F86182C3D4B9E0019971A /* Kingfisher */,
 			);
 			productName = Filmatica;
 			productReference = 164572712C3B61F7005B7136 /* Filmatica.app */;
@@ -351,6 +354,7 @@
 			mainGroup = 164572682C3B61F7005B7136;
 			packageReferences = (
 				16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				169F86172C3D4B9E0019971A /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 164572722C3B61F7005B7136 /* Products */;
 			projectDirPath = "";
@@ -779,6 +783,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		169F86172C3D4B9E0019971A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -801,6 +813,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 16348FDF2C3D1C1200CDB4D5 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxTest;
+		};
+		169F86182C3D4B9E0019971A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 169F86172C3D4B9E0019971A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
