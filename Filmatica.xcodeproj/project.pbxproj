@@ -28,6 +28,13 @@
 		164572962C3B61F9005B7136 /* FilmaticaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572952C3B61F9005B7136 /* FilmaticaUITests.swift */; };
 		164572982C3B61F9005B7136 /* FilmaticaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164572972C3B61F9005B7136 /* FilmaticaUITestsLaunchTests.swift */; };
 		169F86192C3D4B9E0019971A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 169F86182C3D4B9E0019971A /* Kingfisher */; };
+		169F861C2C3E1D2B0019971A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F861B2C3E1D2B0019971A /* UIView+Ext.swift */; };
+		169F861E2C3E1D7D0019971A /* FTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F861D2C3E1D7D0019971A /* FTitleLabel.swift */; };
+		169F86202C3E1DA90019971A /* FBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F861F2C3E1DA90019971A /* FBodyLabel.swift */; };
+		169F86232C3E1F190019971A /* FImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F86222C3E1F190019971A /* FImageView.swift */; };
+		169F86252C3E35200019971A /* FStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F86242C3E35200019971A /* FStackView.swift */; };
+		169F86272C3E74440019971A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F86262C3E74440019971A /* APIClient.swift */; };
+		169F862A2C3E74580019971A /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169F86292C3E74580019971A /* NetworkConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +75,13 @@
 		164572912C3B61F9005B7136 /* FilmaticaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmaticaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		164572952C3B61F9005B7136 /* FilmaticaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmaticaUITests.swift; sourceTree = "<group>"; };
 		164572972C3B61F9005B7136 /* FilmaticaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmaticaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		169F861B2C3E1D2B0019971A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		169F861D2C3E1D7D0019971A /* FTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FTitleLabel.swift; sourceTree = "<group>"; };
+		169F861F2C3E1DA90019971A /* FBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBodyLabel.swift; sourceTree = "<group>"; };
+		169F86222C3E1F190019971A /* FImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FImageView.swift; sourceTree = "<group>"; };
+		169F86242C3E35200019971A /* FStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FStackView.swift; sourceTree = "<group>"; };
+		169F86262C3E74440019971A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		169F86292C3E74580019971A /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				16348FB72C3CDE1200CDB4D5 /* Color+Ext.swift */,
+				169F861B2C3E1D2B0019971A /* UIView+Ext.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -146,7 +161,7 @@
 		16348FC02C3CF04C00CDB4D5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				16348FD82C3D0DFD00CDB4D5 /* Cells */,
+				169F861A2C3E1CC40019971A /* CustomViews */,
 				16348FC92C3CF4B400CDB4D5 /* HomeViewController.swift */,
 				16348FCB2C3CF4D900CDB4D5 /* MovieDetailViewController.swift */,
 			);
@@ -188,6 +203,8 @@
 		16348FC52C3CF0C800CDB4D5 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				169F86262C3E74440019971A /* APIClient.swift */,
+				169F86292C3E74580019971A /* NetworkConstant.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -252,6 +269,26 @@
 				164572972C3B61F9005B7136 /* FilmaticaUITestsLaunchTests.swift */,
 			);
 			path = FilmaticaUITests;
+			sourceTree = "<group>";
+		};
+		169F861A2C3E1CC40019971A /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				16348FD82C3D0DFD00CDB4D5 /* Cells */,
+				169F86212C3E1E040019971A /* UI Components */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		169F86212C3E1E040019971A /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				169F861F2C3E1DA90019971A /* FBodyLabel.swift */,
+				169F861D2C3E1D7D0019971A /* FTitleLabel.swift */,
+				169F86222C3E1F190019971A /* FImageView.swift */,
+				169F86242C3E35200019971A /* FStackView.swift */,
+			);
+			path = "UI Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,15 +458,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				16348FDA2C3D0E2F00CDB4D5 /* MovieTableViewCell.swift in Sources */,
+				169F86272C3E74440019971A /* APIClient.swift in Sources */,
 				16348FB12C3CD4D500CDB4D5 /* Coordinator.swift in Sources */,
+				169F86252C3E35200019971A /* FStackView.swift in Sources */,
 				16348FDC2C3D103B00CDB4D5 /* UIImageViewAsync.swift in Sources */,
 				16348FCE2C3CF74900CDB4D5 /* HomeViewModel.swift in Sources */,
+				169F861E2C3E1D7D0019971A /* FTitleLabel.swift in Sources */,
 				16348FB82C3CDE1200CDB4D5 /* Color+Ext.swift in Sources */,
+				169F86232C3E1F190019971A /* FImageView.swift in Sources */,
 				16348FCA2C3CF4B400CDB4D5 /* HomeViewController.swift in Sources */,
 				164572752C3B61F7005B7136 /* AppDelegate.swift in Sources */,
 				16348FCC2C3CF4D900CDB4D5 /* MovieDetailViewController.swift in Sources */,
+				169F86202C3E1DA90019971A /* FBodyLabel.swift in Sources */,
+				169F861C2C3E1D2B0019971A /* UIView+Ext.swift in Sources */,
 				16348FB32C3CD5A700CDB4D5 /* MainCoordinator.swift in Sources */,
 				164572772C3B61F7005B7136 /* SceneDelegate.swift in Sources */,
+				169F862A2C3E74580019971A /* NetworkConstant.swift in Sources */,
 				16348FC82C3CF47A00CDB4D5 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

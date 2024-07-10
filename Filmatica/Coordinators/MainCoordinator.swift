@@ -29,7 +29,7 @@ class MainCoordinator: Coordinator {
 
     func navBarUISetup() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.tintColor = .secondColor
+        navigationController?.navigationBar.tintColor = .mainColor
         navigationController?.navigationBar.barTintColor = .secondColor
         navigationController?.navigationBar
             .largeTitleTextAttributes = [.foregroundColor: UIColor.white]
