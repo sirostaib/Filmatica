@@ -30,66 +30,65 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .mainColor
         title = "Filmatica"
 
-        setupTableView()
+        setupTableViewUI()
+        registerCells()
         bindViewModel()
+        bindTableViewSelection()
         viewModel.fetchMovies()
     }
 
-    private func setupTableView() {
-
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .mainColor
-
-        view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    private func bindViewModel() {
+        // Bind items to tableView
+        viewModel.myMovies
+            .drive(
+                tableView.rx.items(cellIdentifier: MovieTableViewCell.identifier,
+                                   cellType: MovieTableViewCell.self)) { row, model, cell in
+                                       print(row)
+                                       cell.configure(with: model)
+        }
+        .disposed(by: disposeBag)
     }
 
-    private func bindViewModel() {
-        viewModel.myMovies
-            .drive(tableView.rx.items(cellIdentifier: "Cell")) { (row, movie, cell) in
-                cell.textLabel?.text = "\(row+1). " + movie.title
-                cell.backgroundColor = .clear
-            }
-            .disposed(by: disposeBag)
+    private func bindTableViewSelection() {
+        tableView.rx.modelSelected(Movie.self)
+            .subscribe(onNext: { [weak self] movie in
+                   self?.viewModel.coordinator?.openMovieDetail(with: movie)
+
+                   // Deselect the row with animation
+                   self?.deselectRow()
+               })
+               .disposed(by: disposeBag)
+    }
+
+    private func setupTableViewUI() {
+        view.addSubview(tableView)
+
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        tableView.backgroundColor = .mainColor
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            // intentionally removed bottom safeArea!
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+
+    }
+
+    func registerCells() {
+        tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: MovieTableViewCell.identifier)
     }
 
     func buttonPressed(movieTitle: String) {
         viewModel.navigateButtonPressed(movieTitle: movieTitle)
     }
-}
 
-// extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 25
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        
-//        cell.backgroundColor = .clear
-//        
-//        
-//        let bgColorView = UIView()
-//        bgColorView.backgroundColor = .secondColor
-//        cell.selectedBackgroundView = bgColorView
-//        
-//        
-//        cell.textLabel?.text = "\(indexPath.row + 1) - Slaw"
-//        
-//        return cell
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let movieTitle = tableView.cellForRow(at: indexPath)?.textLabel?.text ?? "Does not have title"
-//        buttonPressed(movieTitle: movieTitle)
-//        tableView.cellForRow(at: indexPath)?.isSelected = false
-//    }
-//    
-//    
-// }
+    func deselectRow() {
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+    }
+}
