@@ -18,5 +18,8 @@ This is a practice iOS app for implementing various best practices while develop
 - Programmatic layout ✅
 - Rx network calls ✅
 - Dense SOLID applied ✅
-- Unit testing (very important)
+- Unit testing (very important) ✅
+- Implemented Best practices, design patterns when necessary ✅
+- Considered Future-Proofing the code ✅
+- Focused on Code Readability - for other people to easily understand the code ✅
 - SwiftLint ✅
