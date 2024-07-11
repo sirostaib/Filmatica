@@ -6,27 +6,42 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MainCoordinator: Coordinator {
 
     var navigationController: UINavigationController?
 
+    // MARK: - Methods
     func start() {
-        let viewModel = HomeViewModel()
-        viewModel.coordinator = self
-        let viewController = HomeViewController(viewModel: viewModel)
 
+        let viewController = setupInitialViewController()
         navBarUISetup()
         navigationController?.setViewControllers([viewController], animated: false)
     }
 
     func openMovieDetail(with movie: Movie) {
-        let viewController = MovieDetailViewController()
-        viewController.movie = movie
-        viewController.coordinator = self
+        let viewModel = MovieDetailViewModel(movieModel: movie)
+        viewModel.coordinator = self
+        let viewController = MovieDetailViewController(viewModel: viewModel)
+
         navigationController?.pushViewController(viewController, animated: true)
     }
 
+    func setupInitialViewController() -> HomeViewController {
+        guard let baseURL = URL(string: NetworkingConstant.shared.baseURL) else {
+            fatalError("Invalid base URL")
+        }
+
+        let networkClient = NetworkClient(baseURL: baseURL, apiKey: NetworkingConstant.shared.apiKey)
+        let movieRepository = MovieRepository(networkClient: networkClient )
+        let viewModel = HomeViewModel(repo: movieRepository)
+        viewModel.coordinator = self
+        return HomeViewController(viewModel: viewModel)
+    }
+
+    // MARK: - Global Navigation Bar UI
     func navBarUISetup() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .mainColor
