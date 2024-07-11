@@ -21,8 +21,7 @@ class FStackView: UIStackView {
     private func configure() {
         self.axis = .vertical
         self.alignment = .leading
-        self.spacing = 8
+        self.spacing = 18
         self.translatesAutoresizingMaskIntoConstraints = false
-        print("my job is done")
     }
 }
