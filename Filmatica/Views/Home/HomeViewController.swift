@@ -104,7 +104,7 @@ class HomeViewController: UIViewController {
         tableView.rx.modelSelected(Movie.self)
             .subscribe(onNext: { [weak self] movie in
                 self?.navigateToDetailScreen(with: movie)
-                print("here")
+                
                 // Deselect the row with animation
                 self?.deselectRow()
             })
