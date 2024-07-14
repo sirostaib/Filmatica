@@ -29,11 +29,11 @@ This is a practice iOS app for implementing various best practices while develop
 # Updated in Build #2
 
 - Updated my View Models to support Black Box Testing.
-  Now the ViewModel's internals are mostly encapsulated (private). only public interfaces are public to the outside word.
+  - Now the ViewModel's internals are mostly encapsulated (private). only public interfaces are public to the outside word.
   
-  So the ViewModel is mostly consisted of (Encapsulated properties & Public interfaces).
-  This means that the business logic is not visible to the views or any other model/view that uses the view model.
-  Also updated the Views to use the public interfaces of the view models.
+  - So the ViewModel is mostly consisted of (Encapsulated properties & Public interfaces).
+  - This means that the business logic is not visible to the views or any other model/view that uses the view model.
+  - Also updated the Views to use the public interfaces of the view models.
 
 - Now the ViewModels conform to Protocols
   This approach adheres to the interface segregation principle (part of the SOLID principles) and enhances the testability and flexibility of your code.
