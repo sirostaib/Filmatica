@@ -62,9 +62,9 @@ This is a practice iOS app for implementing various best practices while develop
 
 - I have also some modifications in the File & Folder structure, Such as moving some code into seperate files, refactoring othres, etc.
 - The main changes are:
-  - ViewModel Files
-  - ViewModels Testings
-  - New ViewModel Protocols
+  - 📁 ViewModel Files
+  - 📁 ViewModels Testings
+  - 📁 New ViewModel Protocols
   - Focused on improving the overall code based on best practices
 
 - You can see a more detailed changes in the commit history
