@@ -54,17 +54,3 @@ class NetworkClient: NetworkClientProtocol {
     }
 
 }
-
-// MARK: - URLSession Protocol
-protocol URLSessionProtocol {
-    func rx_response(request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)>
-}
-
-extension URLSession: URLSessionProtocol {
-    func rx_response(request: URLRequest) -> Observable<(response: HTTPURLResponse, data: Data)> {
-        return rx.response(request: request)
-            .map { response, data -> (response: HTTPURLResponse, data: Data) in
-                return (response, data)
-            }
-    }
-}
