@@ -9,39 +9,37 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class HomeViewModel {
+class HomeViewModel: HomeViewModelProtocol {
 
-    // MARK: - Properties
-    var coordinator: (any Coordinator)?
+    // MARK: - Initializer
+    init(repo: MovieRepositoryProtocol) {
+        movieRepository = repo
+    }
 
-    let movieRepository: MovieRepositoryProtocol
-    let disposeBag = DisposeBag()
+    // MARK: - Coordinator
+    var coordinator: Coordinator?
 
-    // MARK: - Reactive Properties
-    private let loadingSubject = BehaviorSubject<Bool>(value: false)
-    let moviesRelay = BehaviorRelay<[Movie]>(value: [])
-    let errorSubject = PublishSubject<NetworkError>()
+    // MARK: - Encapsulated Properties
+    private let movieRepository: MovieRepositoryProtocol
+    private let disposeBag = DisposeBag()
+    private let loadingSubject = BehaviorSubject<Bool>(value: true)
+    private let moviesRelay = BehaviorRelay<[Movie]>(value: [])
+    private let errorSubject = PublishSubject<NetworkError>()
 
-    // MARK: - Driver/Signal
-    var movieList: Driver<[Movie]> {
+    // MARK: - Public Interfaces
+    var movieListDriver: Driver<[Movie]> {
         return moviesRelay.asDriver(onErrorJustReturn: [])
     }
     var loading: Signal<Bool> {
         return loadingSubject.asSignal(onErrorJustReturn: false)
     }
-    let errorDriver: Driver<NetworkError>
-
-    // MARK: - Initiallizer
-    init(repo: MovieRepositoryProtocol) {
-        self.errorDriver = errorSubject
-                   .asDriver(onErrorRecover: { _ in
-                       return Driver.just(.unknownError)
-                   })
-
-        movieRepository = repo
+    var errorDriver: Driver<NetworkError> {
+        return errorSubject.asDriver(onErrorRecover: { _ in
+            return Driver.just(.unknownError)
+        })
     }
 
-    // MARK: - Main Methods
+    // MARK: - Main Methods - Public interfaces
     func navigateButtonPressed(movie: Movie) {
         coordinator?.openMovieDetail(with: movie)
     }
@@ -50,11 +48,9 @@ class HomeViewModel {
         movieRepository.getTrendingMovies()
             .do(onSubscribe: { [weak self] in
                 self?.loadingSubject.onNext(true)
-            }, onDispose: { [weak self] in
-                self?.loadingSubject.onNext(false)
             })
             .subscribe(onNext: { [weak self] moviesResult in
-                // Handle received moviesModel
+                // Handle received movies
                 self?.moviesRelay.accept(moviesResult.results)
             }, onError: { [weak self] error in
                 // Handle error
@@ -63,7 +59,10 @@ class HomeViewModel {
                 } else {
                     self?.errorSubject.onNext(.networkFailure(error: error))
                 }
-                self?.loadingSubject.onNext(false)
+            }, onCompleted: {
+                self.loadingSubject.onNext(false)
+            }, onDisposed: {
+                self.loadingSubject.onNext(false)
             })
             .disposed(by: disposeBag)
     }
