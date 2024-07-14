@@ -11,7 +11,7 @@ import XCTest
 class MoviesModelTests: XCTestCase {
 
     func testMoviesModelDecoding() {
-        let json = """
+        let response = """
         {
             "page": 1,
             "results": [
@@ -32,7 +32,9 @@ class MoviesModelTests: XCTestCase {
             "total_pages": 10,
             "total_results": 100
         }
-        """.data(using: .utf8)!
+        """
+
+        let json = response.data(using: .utf8)!
 
         do {
             let decodedMoviesModel = try JSONDecoder().decode(MoviesModel.self, from: json)
