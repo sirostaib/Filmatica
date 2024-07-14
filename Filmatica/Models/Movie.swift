@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - MoviesModel - from JSON
-struct MoviesModel: Codable {
+struct MoviesModel: Codable, Equatable {
     let page: Int
     let results: [Movie]
     let totalPages, totalResults: Int
