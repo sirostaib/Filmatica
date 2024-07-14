@@ -25,7 +25,7 @@ class ResponseDecoderTests: XCTestCase {
 
     func testDecodeResponse_SuccessfulDecoding() {
         // Arrange
-        let jsonData = """
+        let response = """
                          {
                              "id": 1,
                              "original_title": "Test Movie",
@@ -40,10 +40,11 @@ class ResponseDecoderTests: XCTestCase {
                              "first_air_date": "2023-01-01"
                          }
 
-            """.data(using: .utf8)!
+            """
+        let json = response.data(using: .utf8)!
 
         // Act
-        let result = decoder.decodeResponse(data: jsonData, responseType: Movie.self)
+        let result = decoder.decodeResponse(data: json, responseType: Movie.self)
 
         // Assert
         XCTAssertNoThrow(try result.toBlocking().first())
