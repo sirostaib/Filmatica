@@ -52,7 +52,7 @@ class MainCoordinatorTests: XCTestCase {
         }
 
         do {
-            let currentMovie = try pushedViewController.viewModel.currentMovie.toBlocking().first()
+            let currentMovie = try pushedViewController.viewModel.currentMovieDriver.toBlocking().first()
             XCTAssertEqual(currentMovie, movie)
         } catch {
             XCTFail("Failed to get currentMovie from Driver")
