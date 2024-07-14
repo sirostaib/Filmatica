@@ -7,6 +7,7 @@
 
 import XCTest
 import RxSwift
+import RxCocoa
 import RxTest
 @testable import Filmatica
 
@@ -15,133 +16,155 @@ class HomeViewModelTests: XCTestCase {
     var viewModel: HomeViewModel!
     var mockRepository: MockMovieRepository!
     var disposeBag: DisposeBag!
+    var scheduler: TestScheduler!
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    override func setUp() {
+        super.setUp()
+        disposeBag = DisposeBag()
+        scheduler = TestScheduler(initialClock: 0)
         mockRepository = MockMovieRepository()
         viewModel = HomeViewModel(repo: mockRepository)
-        disposeBag = DisposeBag()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         viewModel = nil
         mockRepository = nil
         disposeBag = nil
-        try super.tearDownWithError()
+        scheduler = nil
+        super.tearDown()
     }
 
     func testInitialization() {
         XCTAssertNotNil(viewModel)
-        XCTAssertTrue(viewModel.moviesRelay.value.isEmpty)
-        var loadingResult: Bool?
-        viewModel.loading
-            .emit(onNext: { loading in
-                loadingResult = loading
-            })
-            .disposed(by: disposeBag)
-        XCTAssertNotNil(loadingResult)
-        XCTAssertFalse(loadingResult!)
-
-//        var errorResult: NetworkError?
-//        viewModel.errorDriver
-//            .drive(onNext: { error in
-//                errorResult = error
-//            })
-//            .disposed(by: disposeBag)
-//        XCTAssertNotNil(errorResult)
-//        XCTAssertEqual(errorResult!, .unknownError)
+        XCTAssertNotNil(viewModel.movieListDriver)
+        XCTAssertNotNil(viewModel.loading)
+        XCTAssertNotNil(viewModel.errorDriver)
     }
 
-    func testFetchMovies_SuccessfulResponse() {
-        // Arrange
+    func testFetchMoviesSuccessfully() {
+        // Given
+        mockRepository.shouldReturnError = false
         let expectedMovies = [MockMovie.movie1, MockMovie.movie2]
-        mockRepository.mockMoviesResponse.onNext(MoviesModel(page: 1,
-                                                             results: expectedMovies, totalPages: 1, totalResults: 2))
 
-        // Act viewModel.fetchMovies()
-        viewModel.moviesRelay.accept([MockMovie.movie1, MockMovie.movie2])
+        // When
+        var movieResult: [Movie]?
+        // let loadingExpectation = expectation(description: "Loading state changes")
 
-        // Assert
-        XCTAssertEqual(viewModel.moviesRelay.value.count, expectedMovies.count)
-        var loadingResult: Bool?
-        viewModel.loading
-            .emit(onNext: { loading in
-                loadingResult = loading
+        viewModel.fetchMovies()
+
+        // Drive results
+        viewModel.movieListDriver
+            .drive(onNext: { movies in
+                movieResult = movies
             })
             .disposed(by: disposeBag)
-        XCTAssertNotNil(loadingResult)
-        XCTAssertFalse(loadingResult!)
 
+        // Then
+        XCTAssertNotNil(movieResult)
+        XCTAssertEqual(movieResult?.count, 2)
+        XCTAssertEqual(movieResult, expectedMovies)
     }
 
-    func testFetchMovies_ErrorResponse() {
-        // Arrange
-        let expectedError = NetworkError.noInternetConnection
-        mockRepository.mockError.onNext(expectedError)
+    // Test Fetching Movies with Error
+    func testFetchMoviesWithError() {
 
-        let expectation = self.expectation(description: "Loading should complete")
+        // Given
+        mockRepository.shouldReturnError = true
+        let expectedMovies: [Movie] = []
 
-        // Act
-        // viewModel.fetchMovies()
+        // When
+        var movieResult: [Movie]?
+        // let loadingExpectation = expectation(description: "Loading state changes")
 
-        // Assert
-        var loadingResult: Bool?
+        viewModel.fetchMovies()
+
+        // Drive results
+        viewModel.movieListDriver
+            .drive(onNext: { movies in
+                movieResult = movies
+            })
+            .disposed(by: disposeBag)
+
+        // Then
+        XCTAssertNotNil(movieResult)
+        XCTAssertEqual(movieResult?.count, 0)
+        XCTAssertEqual(movieResult, expectedMovies)
+    }
+
+    func testLoadingState() {
+        // Given
+        mockRepository.shouldReturnError = false
+        let loadingExpectation = expectation(description: "Loading state changes")
+
+        var loadingStates: [Bool] = []
+
         viewModel.loading
-            .emit(onNext: { loading in
-                loadingResult = loading
-                if !loading {
-                    expectation.fulfill()
+            .skip(1)
+            .distinctUntilChanged()
+            .emit(onNext: { isLoading in
+                loadingStates.append(isLoading)
+                // Fulfill the expectation only when loading becomes false
+                if !isLoading && loadingStates.count == 2 {
+                    loadingExpectation.fulfill()
                 }
             })
             .disposed(by: disposeBag)
 
-        waitForExpectations(timeout: 5) { error in
-            XCTAssertNil(error, "Loading state not updated within timeout")
-            XCTAssertNotNil(loadingResult)
-            XCTAssertFalse(loadingResult!)
-            XCTAssertEqual(self.viewModel.moviesRelay.value.count, 0)
+        // When
+        viewModel.fetchMovies()
+
+        // Wait for expectations
+        waitForExpectations(timeout: 1) { _ in
+            // Then
+            XCTAssertEqual(loadingStates, [true, false])
         }
     }
 
-    func testNavigateButtonPressed() {
-        // Arrange
-        let mockCoordinator = MockCoordinator()
-        viewModel.coordinator = mockCoordinator
-        let movieToNavigate = MockMovie.movie1
+    func testLoadingStateInError() {
+        // Given
+        mockRepository.shouldReturnError = true
+        let loadingExpectation = expectation(description: "Loading state changes")
 
-        // Act
-        viewModel.navigateButtonPressed(movie: movieToNavigate)
+        var loadingStates: [Bool] = []
 
-        // Assert
-        XCTAssertEqual(mockCoordinator.openMovieDetailCallsCount, 1)
-        XCTAssertEqual(mockCoordinator.openMovieDetailMoviePassed?.id, movieToNavigate.id)
-        XCTAssertEqual(mockCoordinator.openMovieDetailMoviePassed?.originalTitle, movieToNavigate.originalTitle)
-    }
-}
+        viewModel.loading
+            .skip(1)
+            .emit(onNext: { isLoading in
+                loadingStates.append(isLoading)
+                // Fulfill the expectation only when loading becomes false
+                if !isLoading && loadingStates.count == 2 {
+                    loadingExpectation.fulfill()
+                }
+            })
+            .disposed(by: disposeBag)
 
-// Mock MovieRepository for testing
-class MockMovieRepository: MovieRepositoryProtocol {
-    var mockMoviesResponse = PublishSubject<MoviesModel>()
-    var mockError = PublishSubject<NetworkError>()
+        // When
+        viewModel.fetchMovies()
 
-    func getTrendingMovies() -> Observable<MoviesModel> {
-        return mockMoviesResponse
-    }
-}
-
-// Mock Coordinator for testing
-class MockCoordinator: Coordinator {
-    var navigationController: UINavigationController?
-
-    func start() {
-        // test
+        // Wait for expectations
+        waitForExpectations(timeout: 1) { _ in
+            // Then
+            XCTAssertEqual(loadingStates, [true, false])
+        }
     }
 
-    var openMovieDetailCallsCount = 0
-    var openMovieDetailMoviePassed: Movie?
+    // Test Fetching Movies with Error
+    func testFetchMoviesWithErrorDriver() {
+        // Given
+        mockRepository.shouldReturnError = true
 
-    func openMovieDetail(with movie: Movie) {
-        openMovieDetailCallsCount += 1
-        openMovieDetailMoviePassed = movie
+        var errorResult: NetworkError?
+        let expectedResult: NetworkError = NetworkError.noInternetConnection
+
+        viewModel.errorDriver.drive(onNext: { error in
+            errorResult = error
+        }).disposed(by: disposeBag)
+
+        // fetch movies
+        viewModel.fetchMovies()
+
+        XCTAssertNotNil(errorResult)
+        XCTAssertEqual(errorResult, expectedResult)
+
     }
 }

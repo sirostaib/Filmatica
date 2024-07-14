@@ -13,50 +13,57 @@ import RxTest
 class MovieDetailViewModelTests: XCTestCase {
 
     var viewModel: MovieDetailViewModel!
-    var movie: Movie!
+    var disposeBag: DisposeBag!
+    var scheduler: TestScheduler!
 
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        movie = Movie(id: 1, originalTitle: "Original Title", overview: "Overview",
-                      posterPath: "poster.jpg", title: "Titanic", popularity: 7.5, releaseDate: "2023-01-01",
-                      voteAverage: 8.0, originalName: nil, name: nil, firstAirDate: nil)
-        viewModel = MovieDetailViewModel(movieModel: movie)
+    override func setUp() {
+        super.setUp()
+        disposeBag = DisposeBag()
+        scheduler = TestScheduler(initialClock: 0)
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
         viewModel = nil
-        movie = nil
-        try super.tearDownWithError()
+        disposeBag = nil
+        scheduler = nil
+        super.tearDown()
     }
 
     func testInitialization() {
-        XCTAssertEqual(viewModel.currentMovieRelay.value, movie)
+        // Given
+        let movie = MockMovie.movie1
+
+        // When
+        viewModel = MovieDetailViewModel(movieModel: movie)
+
+        // Then
+        XCTAssertNotNil(viewModel)
+        XCTAssertNotNil(try viewModel.currentMovieDriver.toBlocking().first())
+        XCTAssertEqual(try viewModel.currentMovieDriver.toBlocking().first()?.id, movie.id)
     }
 
     func testCurrentMovieDriver() {
-        // Arrange
-        let scheduler = TestScheduler(initialClock: 0)
-        let observer = scheduler.createObserver(Movie.self)
+        // Given
+        let movie = MockMovie.movie1
+        viewModel = MovieDetailViewModel(movieModel: movie)
 
-        // Act
-        viewModel.currentMovie
-            .drive(observer)
-            .disposed(by: viewModel.disposeBag)
+        // When
+        let movieObserver = scheduler.createObserver(Movie.self)
+        viewModel.currentMovieDriver.drive(movieObserver).disposed(by: disposeBag)
 
-        // Assert
-        XCTAssertEqual(observer.events.count, 1)
-        XCTAssertEqual(observer.events.first?.value.element, movie)
+        // Then
+        scheduler.start()
+        let expectedEvents = [
+            Recorded.next(0, movie)
+        ]
+        XCTAssertEqual(movieObserver.events, expectedEvents)
     }
 
-    func testUpdateNavTintWithoutCoordinator() {
-        // Arrange
-        viewModel.coordinator = nil
+    func testInitializationMovieNotNil() {
+        // When
+        viewModel = MovieDetailViewModel(movieModel: MockMovie.movie2)
 
-        // Act
-        viewModel.updateNavTint()
-
-        // Assert
-        // Verify that nothing crashes or changes without a coordinator set
-        XCTAssertNil(viewModel.coordinator)
+        // Then
+        XCTAssertNotNil(try viewModel.currentMovieDriver.toBlocking().first())
     }
 }
