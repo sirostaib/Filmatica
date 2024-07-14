@@ -26,7 +26,7 @@ This is a practice iOS app for implementing various best practices while develop
 
 --------------------------------------------------------------
 
-# Updated in Build #2
+# Updates in Build #2 ⌨️
 
 - Updated my View Models to support Black Box Testing.
   - Now the ViewModel's internals are mostly encapsulated (private). only public interfaces are public to the outside word.
