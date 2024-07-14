@@ -8,7 +8,11 @@
 import Foundation
 @testable import Filmatica
 
-class MockMovie {
+class MockMovie: Equatable {
+    static func == (lhs: MockMovie, rhs: MockMovie) -> Bool {
+        false
+    }
+
     static var movie1 = Movie(id: 1, originalTitle: "Titanic Movie",
                       overview: "this is the titanic movie", posterPath: "abcdefg.com",
                     title: "Titanic",
