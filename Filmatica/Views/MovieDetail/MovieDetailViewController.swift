@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import RxSwift
 import Kingfisher
 
 class MovieDetailViewController: UIViewController {
 
     // MARK: - Properties
-    var viewModel: MovieDetailViewModel
+    var viewModel: MovieDetailViewModelProtocol
+    private let disposeBag = DisposeBag()
 
     private let movieImageView = FImageView(frame: CGRect())
     private var labelStackView = FStackView()
@@ -47,11 +49,11 @@ class MovieDetailViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.updateNavTint()
+        viewModel.updateNavTint(initialState: false)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        viewModel.resetNavTint()
+        viewModel.updateNavTint(initialState: true)
     }
 
     // MARK: - Setup UI layout
@@ -124,7 +126,8 @@ class MovieDetailViewController: UIViewController {
 
     // MARK: - binding methods
     private func bindMovieData() {
-        viewModel.currentMovie
+        viewModel.currentMovieDriver
+            .distinctUntilChanged()
             .drive(onNext: { [weak self] movie in
                 // Update UI with movie details
                 self?.title = MovieHelper.shared.getMovieName(movie: movie)
@@ -134,6 +137,6 @@ class MovieDetailViewController: UIViewController {
                 self?.movieRating.text = MovieHelper.shared.getRatingText(vote: movie.voteAverage)
                 self?.movieReleaseDate.text = "Released: " + MovieHelper.shared.getMovieReleaseDate(movie: movie)
             })
-            .disposed(by: viewModel.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

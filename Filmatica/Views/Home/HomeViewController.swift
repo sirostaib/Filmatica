@@ -12,7 +12,8 @@ import RxSwift
 class HomeViewController: UIViewController {
 
     // MARK: - Properties
-    var viewModel: HomeViewModel
+    var viewModel: HomeViewModelProtocol
+    private let disposeBag = DisposeBag()
 
     private let tableView = FTableView(frame: CGRect(), style: .plain)
     private let loadingView = FLoadingIndicator(frame: CGRect())
@@ -70,6 +71,7 @@ class HomeViewController: UIViewController {
     // MARK: - Binding methods
     private func bindLoading() {
         viewModel.loading
+            .distinctUntilChanged()
             .emit(onNext: { [weak self] isLoading in
                 if isLoading {
                     self?.loadingView.startAnimating()
@@ -77,15 +79,16 @@ class HomeViewController: UIViewController {
                     self?.loadingView.stopAnimating()
                 }
             })
-            .disposed(by: viewModel.disposeBag)
+            .disposed(by: disposeBag)
     }
 
     private func bindTableViewData() {
-        viewModel.movieList
+        viewModel.movieListDriver
+            .distinctUntilChanged()
             .drive(tableView.rx.items(cellIdentifier: MovieTableViewCell.identifier,
                                       cellType: MovieTableViewCell.self)) { _, model, cell in
                 cell.configure(with: model)
-            }.disposed(by: viewModel.disposeBag)
+            }.disposed(by: disposeBag)
     }
 
     private func bindErrors() {
@@ -94,18 +97,18 @@ class HomeViewController: UIViewController {
                 self?.presentKFAlertOnMainThread(title: "Oops!",
                                                  message: error.localizedDescription, buttonTitle: "Okay")
             })
-            .disposed(by: viewModel.disposeBag)
+            .disposed(by: disposeBag)
     }
 
     private func bindTableViewSelection() {
         tableView.rx.modelSelected(Movie.self)
             .subscribe(onNext: { [weak self] movie in
                 self?.navigateToDetailScreen(with: movie)
-
+                print("here")
                 // Deselect the row with animation
                 self?.deselectRow()
             })
-            .disposed(by: viewModel.disposeBag)
+            .disposed(by: disposeBag)
     }
 
     // MARK: - tableView methods
